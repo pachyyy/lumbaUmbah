@@ -1,10 +1,26 @@
-import './index.css'
+import NavBar from './components/NavBar.jsx';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu"
+
+import "./index.css";
 
 function App() {
 
   return (
-    <h1 className='text-3xl font-bold'>Hello, world!</h1>
-  )
+    <>
+      <NavBar />
+
+    </>
+
+  );
 }
 
 export default App;
