@@ -1,4 +1,5 @@
 import NavBar from './components/NavBar.jsx';
+import Footer from './components/Footer.jsx';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,7 +17,9 @@ function App() {
 
   return (
     <>
-      <NavBar />
+     <NavBar />
+
+     <Footer/>
 
     </>
 

@@ -10,7 +10,7 @@ function NavBar() {
           </div>
 
           {/* Nav Links */}
-          <div className="">
+          <div className="">  
             <ul className="flex gap-[4vw] text-[#0069A8]">
               <li className="hover:text-white hover:bg-[#0069A8] transition-ease-in-out duration-300 cursor-pointer px-4 py-2 rounded-full"><a href="#">Home</a></li>
               <li className="hover:text-white hover:bg-[#0069A8] transition-ease-in-out duration-300 cursor-pointer px-4 py-2 rounded-full"><a href="#">Services & Price</a></li>
