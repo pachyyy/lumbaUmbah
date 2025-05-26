@@ -17,14 +17,14 @@ function Footer() {
 
         {/* Logo */}
         <div className="flex flex-wrap bottom-10 mx-auto">
-          <a><img src="./logo-navy.png" className="h-20 w-20"></img></a>
+          <a><img src="./logo-navy.png" className="h-15 w-15"></img></a>
         </div>
 
         {/* Social Media */}
         <div className="flex flex-wrap items-center gap-6 bottom-10 mx-auto">
-          <a href="#"> <FaWhatsapp className="h-10 w-10 text-sky-700"/></a>
-          <a href="#"> <Instagram className="h-10 w-10 text-sky-700"/></a>
-          <a href="#"> <FaFacebook className="h-10 w-10 text-sky-700"/></a>
+          <a href="#"> <FaWhatsapp className="h-8 w-8 text-sky-700"/></a>
+          <a href="#"> <Instagram className="h-8 w-8 text-sky-700"/></a>
+          <a href="#"> <FaFacebook className="h-8 w-8 text-sky-700"/></a>
         </div>
       </div>
     </footer>
