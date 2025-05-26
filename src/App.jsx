@@ -17,10 +17,15 @@ function App() {
 
   return (
     <>
-     <NavBar />
+     <div className='flex'>
+      <NavBar />
 
-     <Footer/>
-
+      <p className='font-rubik italic'>
+        Jancok
+      </p>
+        
+      <Footer/>
+     </div>
     </>
 
   );
