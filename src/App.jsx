@@ -1,5 +1,5 @@
-import NavBar from './components/NavBar.jsx';
-import Footer from './components/Footer.jsx';
+import Home from "./pages/Home";
+import { Routes, Route } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,13 +16,11 @@ import "./index.css";
 function App() {
 
   return (
-    <>
-     <NavBar />
-
-     <Footer/>
-
-    </>
-
+    <main className='main-content'>
+     <Routes>
+      <Route path="/" element={<Home/>} />
+     </Routes>
+    </main>
   );
 }
 
