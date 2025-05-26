@@ -20,9 +20,24 @@ function App() {
      <div className='flex'>
       <NavBar />
 
-      <p className='font-rubik italic'>
-        Jancok
-      </p>
+      <main className='mx-auto w-full'>
+        <div className='grid grid-cols-2 font-rubik mx-auto'>
+
+          {/* Left */}
+          <div className='flex items-center justify-between mx-auto h-full'>
+            <p>
+              "BIAR KAMI YANG <span className='font-bold italic'>UMBAH</span>"
+            </p>
+
+          </div>
+
+
+          {/* Right */}
+          <div className='mx-auto'>
+            <p>Babi</p>
+          </div>
+        </div>
+      </main>
         
       <Footer/>
      </div>
