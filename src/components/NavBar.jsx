@@ -15,7 +15,7 @@ function NavBar() {
             <ul className="flex gap-[4vw] mr-10 justify-end text-sky-700">
               <li className="hover:text-white hover:bg-sky-700 transition-ease-in-out duration-300 cursor-pointer px-4 py-2 rounded-full"><Link to = "/">Home</Link></li>
               <li className="hover:text-white hover:bg-sky-700 transition-ease-in-out duration-300 cursor-pointer px-4 py-2 rounded-full"><Link to = "/price">Services & Price</Link></li>
-              <li className="hover:text-white hover:bg-sky-700 transition-ease-in-out duration-300 cursor-pointer px-4 py-2 rounded-full"><Link to = "/about">About Us</Link></li>
+              <li className="hover:text-white hover:bg-sky-700 transition-ease-in-out duration-300 cursor-pointer px-4 py-2 rounded-full"><Link to = "/about-us">About Us</Link></li>
             </ul>
 
              {/* Order Button */}
