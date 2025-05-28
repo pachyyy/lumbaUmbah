@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 
 function Home(){
     return(
+        <>
         <div className=" bg-[#EFF9FF]">
             <NavBar/>
                 <div className="grid grid-cols-2 items-center min-h-screen px-24 -mb-25">
@@ -35,7 +36,7 @@ function Home(){
                     </div>
                 </div>
             <Footer/>
-        </div>
+        </>
     );
 }
 

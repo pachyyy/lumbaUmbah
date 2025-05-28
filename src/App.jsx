@@ -1,4 +1,5 @@
 import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUs";
 import Price from "./pages/Price";
 import { Routes, Route } from "react-router-dom";
 // import {
@@ -20,7 +21,8 @@ function App() {
     <main className='main-content'>
      <Routes>
       <Route path="/" element={<Home/>} />
-      <Route path="/Price" element={<Price/>} />
+      <Route path="/price" element={<Price/>} />
+      <Route path="/about-us" element={<AboutUs/>} />
      </Routes>
     </main>
   );
