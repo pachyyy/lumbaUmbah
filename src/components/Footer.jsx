@@ -17,7 +17,7 @@ function Footer() {
 
         {/* Logo */}
         <div className="flex flex-wrap bottom-10 mx-auto">
-          <a><img src="./logo-navy.png" className="h-15 w-15"></img></a>
+          <a><img src="./logo/logo-navy.png" className="h-15 w-15"></img></a>
         </div>
 
         {/* Social Media */}

@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 
 function AboutUs() {
   return (
-    <>
+    <div className="bg-[#EFF9FF]">
       <NavBar />
         <div className="min-h-screen w-full pt-28">
           
@@ -15,7 +15,7 @@ function AboutUs() {
             {/* Easy */}
             <div className="ml-6 mr-4">
               <div className="flex justify-center text-3xl">
-                <img src="../public/easy.svg" alt="Easy Icon" className="h-30" ></img>
+                <img src="/assets/easy.svg" alt="Easy Icon" className="h-30" ></img>
               </div>
 
               <div className="flex justify-center text-3xl mt-4 text-sky-700 font-bold">
@@ -32,7 +32,7 @@ function AboutUs() {
             {/* Time Saving */}
             <div className="ml-4 mr-4">
               <div className="flex justify-center text-3xl">
-                <img src="../public/time-saving.svg" alt="Easy Icon" className="h-25" ></img>
+                <img src="/assets/time-saving.svg" alt="Easy Icon" className="h-25" ></img>
               </div>
 
               <div className="flex justify-center text-3xl mt-9 text-sky-700 font-bold">
@@ -48,7 +48,7 @@ function AboutUs() {
             {/* Spotless */}
             <div className="ml-4 mr-6">
               <div className="flex justify-center text-3xl">
-                <img src="../public/spotless.svg" alt="Easy Icon" className="h-30" ></img>
+                <img src="/assets/spotless.svg" alt="Easy Icon" className="h-30" ></img>
               </div>
 
               <div className="flex justify-center text-3xl mt-4 text-sky-700 font-bold">
@@ -64,7 +64,7 @@ function AboutUs() {
           </div>
         </div>
       < Footer/> 
-    </>
+    </div>
   );
 }
 export default AboutUs;

@@ -3,11 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 function NavBar() {
   return(
     <>
-    <nav id="header" className="flex w-full align-items-center mx-auto justify-between p-2 fixed top-0 left-0 right-0 z-30 bg-[#EFF9FF]">
+    <nav id="header" className="flex w-full align-items-center mx-auto justify-between p-2 fixed top-0 left-0 right-0 z-30 bg-transparent">
         <div className="flex justify-between items-center w-[95%] mx-auto">
             {/* Logo  */}
           <div className="flex justify-start items-center">
-            <a href="#"><img src="./logo-navy.png" alt="logo" className="m-4 h-20 w-20" /></a>
+            <a href="#"><img src="./logo/logo-navy.png" alt="logo" className="m-4 h-20 w-20" /></a>
           </div>
 
           {/* Nav Links */}
