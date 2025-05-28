@@ -1,4 +1,5 @@
 import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUs";
 import { Routes, Route } from "react-router-dom";
 import {
   NavigationMenu,
