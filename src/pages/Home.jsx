@@ -3,14 +3,14 @@ import Footer from "../components/Footer";
 
 function Home(){
     return(
-        <div>
+        <div className=" bg-[#EFF9FF]">
             <NavBar/>
-                <div className="grid grid-cols-2 items-center min-h-screen px-24 bg-[#EFF9FF]">
+                <div className="grid grid-cols-2 items-center min-h-screen px-24 -mb-30">
                     <div>
                         <h1 className="text-7xl font-light leading-snug text-sky-950 mb-4">
-                            “ BIAR KAMI <br />
-                            YANG <br /> 
-                            <span className="italic font-bold text-sky-950">UMBAH</span> ”
+                            “BIAR KAMI <br />
+                            &nbsp;YANG <br /> 
+                            <span className="italic font-bold text-sky-950">&nbsp;UMBAH</span> ”
                         </h1>
 
                         <p className="text-[#033145] text-xl mt-8">
