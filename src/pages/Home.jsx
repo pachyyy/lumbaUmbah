@@ -13,14 +13,14 @@ function Home(){
                             <span className="italic font-bold text-sky-950">&nbsp;UMBAH</span> ”
                         </h1>
 
-                        <p className="text-[#033145] text-xl mt-8">
+                        <p className="text-[#033145] text-lg md:text-md mt-2">
                             <span className="font-bold italic">Lumba-umbah</span> provides a variety of services you need <br/>
                             <span className="font-bold">— wash, dry, or fold — </span><br/> <br/>
 
                             <b>Pickup</b> and <b>drop-off</b> options available!
                         </p>
 
-                        <div className="flex items-center gap-2 mt-8">
+                        <div className="flex items-center gap-2 mt-4">
                             <h3 className="text-4xl font-bold text-sky-950">7+</h3>
                             <p className="text-md text-sky-950 font-bold leading-tight">
                                 Years of <br />
