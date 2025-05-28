@@ -10,7 +10,7 @@ function Price(){
   return(
     <div className="bg-[#EFF9FF]">
       <NavBar/>
-        <div className="min-h-screen grid grid-rows-2 items-center mb-20 -mt-20">
+        <div className="min-h-screen grid grid-rows-2 items-center -mt-15">
 
           {/* Title Section */}
           <div className="mx-auto flex flex-col items-center justify-center">
@@ -21,7 +21,7 @@ function Price(){
           
 
           {/* Card Price Section */}
-          <div className="flex flex-row gap-5 items-center justify-center">
+          <div className="flex flex-row gap-5 items-center justify-center -mt-50">
 
             {/* Regular Card */}
             <div className="bg-white w-[421px] h-[512px] rounded-4xl drop-shadow-xl/30">
@@ -219,7 +219,6 @@ function Price(){
               </div>
 
             </div>
-            
           </div>
         </div>
 
