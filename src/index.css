@@ -2,7 +2,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -42,6 +41,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --font-rubik: "Rubik", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
 
 }
 

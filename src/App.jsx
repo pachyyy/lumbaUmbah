@@ -1,16 +1,17 @@
 import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
+import Price from "./pages/Price";
 import { Routes, Route } from "react-router-dom";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu"
+// import {
+//   NavigationMenu,
+//   NavigationMenuContent,
+//   NavigationMenuIndicator,
+//   NavigationMenuItem,
+//   NavigationMenuLink,
+//   NavigationMenuList,
+//   NavigationMenuTrigger,
+//   NavigationMenuViewport,
+// } from "@/components/ui/navigation-menu"
 
 import "./index.css";
 
@@ -20,6 +21,8 @@ function App() {
     <main className='main-content'>
      <Routes>
       <Route path="/" element={<Home/>} />
+      <Route path="/price" element={<Price/>} />
+      <Route path="/about-us" element={<AboutUs/>} />
      </Routes>
     </main>
   );
