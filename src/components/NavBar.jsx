@@ -7,7 +7,7 @@ function NavBar() {
         <div className="flex justify-between items-center w-[95%] mx-auto">
             {/* Logo  */}
           <div className="flex justify-start items-center">
-            <a href="#"><img src="./logo/logo-navy.png" alt="logo" className="m-4 h-20 w-20" /></a>
+            <Link to={"/"}><img src="./logo/logo-navy.png" alt="logo" className="m-4 h-20 w-20" /></Link>
           </div>
 
           {/* Nav Links */}
