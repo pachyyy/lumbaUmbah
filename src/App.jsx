@@ -5,7 +5,8 @@ import Dashboard from "./components/layouts/Dashboard";
 import DashboardHome from "./pages/dashboard/DashboardHome";
 import DataUsers from "./pages/dashboard/DataUsers";
 import { Routes, Route } from "react-router-dom";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/SignUp.jsx";
+import SignIn from "./pages/SignIn.jsx";
 // import {
 //   NavigationMenu,
 //   NavigationMenuContent,
@@ -28,6 +29,7 @@ function App() {
         <Route path="/price" element={<Price />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/signup" element={<SignUp/>} />
+        <Route path="/signin" element={<SignIn/>} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<DashboardHome />} />
           <Route path="data-user" element={<DataUsers />} />
@@ -35,7 +37,7 @@ function App() {
         </Route>
       </Routes>
     </main>
-  );
+  )
 }
 
 export default App;
