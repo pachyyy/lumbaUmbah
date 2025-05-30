@@ -2,8 +2,8 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Price from "./pages/Price";
 import Dashboard from "./components/layouts/Dashboard";
-import DashboardHome from "./pages/dashboard/DashboardHome";
-import DataUsers from "./pages/dashboard/DataUsers";
+import DashboardHome from "./pages/adminDashboard/DashboardHome";
+import DataUsers from "./pages/adminDashboard/DataUsers";
 import { Routes, Route } from "react-router-dom";
 import SignUp from "./pages/SignUp.jsx";
 import SignIn from "./pages/SignIn.jsx";
@@ -19,7 +19,7 @@ import SignIn from "./pages/SignIn.jsx";
 // } from "@/components/ui/navigation-menu"
 
 import "./index.css";
-import DataLaundry from "./pages/dashboard/DataLaundry";
+import DataLaundry from "./pages/adminDashboard/DataLaundry";
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/signin" element={<SignIn/>} />
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route path="/admin-dashboard" element={<Dashboard />}>
           <Route index element={<DashboardHome />} />
           <Route path="data-user" element={<DataUsers />} />
           <Route path="data-laundry" element={<DataLaundry />} />

@@ -1,15 +1,15 @@
 import { UserIcon, List } from "lucide-react";
 
-const Sidebar = () => {
+const AdminSidebar = () => {
   const navLinks = [
     {
       name: "Data User",
-      href: "/dashboard/data-user",
+      href: "/admin-dashboard/data-user",
       icon: <UserIcon />,
     },
     {
       name: "Data Laundry",
-      href: "/dashboard/data-laundry",
+      href: "/admin-dashboard/data-laundry",
       icon: <List />,
     },
   ];
@@ -46,4 +46,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default AdminSidebar;

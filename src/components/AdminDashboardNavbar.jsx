@@ -1,6 +1,6 @@
 import { UserIcon, Bell } from "lucide-react";
 
-const DashboardNavbar = () => {
+const AdminDashboardNavbar = () => {
   return (
     <nav className="fixed left-0 right-0 top-0 flex h-16 items-center justify-between border-b border-gray-200 bg-white">
       <div className="mx-5 flex w-full gap-4 items-center justify-end">
@@ -22,4 +22,4 @@ const DashboardNavbar = () => {
   );
 };
 
-export default DashboardNavbar;
+export default AdminDashboardNavbar;
