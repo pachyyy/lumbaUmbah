@@ -1,4 +1,4 @@
-import { UserIcon, File } from "lucide-react";
+import { UserIcon, List } from "lucide-react";
 
 const Sidebar = () => {
   const navLinks = [
@@ -10,16 +10,16 @@ const Sidebar = () => {
     {
       name: "Data Laundry",
       href: "/dashboard/data-laundry",
-      icon: <File />,
+      icon: <List />,
     },
   ];
 
   return (
-    <aside className="left-0 top-0 hidden h-screen w-60 z-50 bg-white border-r border-gray-200 lg:fixed lg:block">
+    <aside className="left-0 top-0 hidden h-screen w-60 z-50 bg-sky-200 border-r border-gray-200 lg:fixed lg:block">
       <div className="mt-0 flex h-full flex-col p-5 space-y-8">
         <div className="flex items-center gap-2">
           <a href="#">
-            <img src="./logo/logo-navy.png" alt="logo" className="h-12 w-12" />
+            <img src="/logo/logo-navy.png" alt="logo" className="h-12 w-12" />
           </a>
           <h3 className="font-semibold">Lumba Umbah</h3>
         </div>
