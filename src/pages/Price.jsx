@@ -8,7 +8,7 @@ import { FaCircleCheck } from "react-icons/fa6";
 
 function Price(){
   return(
-    <div className="bg-[#EFF9FF]">
+    <div className="bg-[#EFF9FF] leading-normal tracking-normal z-30 top-0 w-screen h-screen">
       <NavBar/>
         <div className="flex flex-col justify-center min-h-screen gap-5 items-center">
 
