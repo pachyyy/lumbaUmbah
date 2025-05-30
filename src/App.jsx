@@ -2,6 +2,7 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/AboutUs";
 import Price from "./pages/Price";
 import { Routes, Route } from "react-router-dom";
+import SignUp from "./pages/SignUp";
 // import {
 //   NavigationMenu,
 //   NavigationMenuContent,
@@ -23,6 +24,7 @@ function App() {
       <Route path="/" element={<Home/>} />
       <Route path="/price" element={<Price/>} />
       <Route path="/about-us" element={<AboutUs/>} />
+      <Route path="/signup" element={<SignUp/>} />
      </Routes>
     </main>
   );
