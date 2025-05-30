@@ -5,6 +5,7 @@ import Dashboard from "./components/layouts/Dashboard";
 import DashboardHome from "./pages/dashboard/DashboardHome";
 import DataUsers from "./pages/dashboard/DataUsers";
 import { Routes, Route } from "react-router-dom";
+import SignUp from "./pages/SignUp";
 // import {
 //   NavigationMenu,
 //   NavigationMenuContent,
@@ -26,7 +27,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/price" element={<Price />} />
         <Route path="/about-us" element={<AboutUs />} />
-
+        <Route path="/signup" element={<SignUp/>} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<DashboardHome />} />
           <Route path="data-user" element={<DataUsers />} />

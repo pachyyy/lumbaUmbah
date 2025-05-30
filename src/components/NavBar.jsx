@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 function NavBar() {
   return(
     <>
-    <nav id="header" className="flex w-full align-items-center mx-auto justify-between p-2 fixed top-0 left-0 right-0 z-30 bg-transparent">
+      <nav id="header" className="flex w-full align-items-center mx-auto justify-between p-2 fixed top-0 left-0 right-0 z-30 bg-transparent">
         <div className="flex justify-between items-center w-[95%] mx-auto">
             {/* Logo  */}
           <div className="flex justify-start items-center">
@@ -20,14 +20,13 @@ function NavBar() {
 
              {/* Order Button */}
             <div>
-              <button className="bg-sky-700 text-white rounded-xl px-4 py-3 ml-10 mr-10 hover:bg-green-600 cursor-pointer transition-ease-in-out duration-300"><a href="#">Order Now</a></button>
+              <button className="bg-sky-700 text-white rounded-xl px-4 py-3 ml-10 mr-10 hover:bg-green-600 cursor-pointer transition-ease-in-out duration-300"><Link to="/signup">Order Now</Link></button>
             </div>
           </div>         
         </div>
       </nav>
     </>
   );
-
 }
 
 export default NavBar;
