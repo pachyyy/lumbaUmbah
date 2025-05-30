@@ -32,7 +32,7 @@ function Home(){
 
                         {/* Washing Machine */}
                         <div className="flex justify-center">
-                            <img src="/public/hero.svg" alt="Laundry illustration" className="w-500px" />
+                            <img src="/assets/hero.svg" alt="Laundry illustration" className="w-[500px]" />
                         </div>
                     </div>
                 <Footer/>
