@@ -1,7 +1,7 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import { LuWashingMachine } from "react-icons/lu";
-import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import { IoFlash } from "react-icons/io5";
 import { FaCircleCheck } from "react-icons/fa6";
 
 function Price() {
@@ -9,6 +9,7 @@ function Price() {
   const serviceCards = [
     /* Regular Service*/
     {
+      logo: <LuWashingMachine className="w-10 h-10" />,
       title: "Regular Service",
       subtitle: "Best for regular needs",
       items: [
@@ -24,6 +25,7 @@ function Price() {
 
     /* Ultimate Service*/
     {
+      logo: <IoFlash className="w-10 h-10 text-[#fff700]" />,
       title: "Ultimate Service",
       subtitle: "Best for ultimate needs",
       items: [
@@ -39,6 +41,7 @@ function Price() {
 
     /* Medium Service*/
     {
+      logo: <LuWashingMachine className="w-10 h-10" />,
       title: "Medium Service",
       subtitle: "Best for fast needs",
       items: [
@@ -70,7 +73,7 @@ function Price() {
             <div key={index} className={`${card.bgColor} ${cardStyle} p-6`}>
               {/* Title & Icon */}
               <div className="flex items-center gap-4 mb-2">
-                <LuWashingMachine className="w-10 h-10" />
+                {card.logo}
                 <div>
                   <h1 className="text-2xl font-bold text-sky-700 font-rubik">
                     {card.title}
