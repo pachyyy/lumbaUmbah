@@ -1,18 +1,50 @@
-import { UserIcon, List } from "lucide-react";
+import { UserIcon, List, Book } from "lucide-react";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const AdminSidebar = () => {
-  const navLinks = [
-    {
-      name: "Data User",
-      href: "/admin-dashboard/data-user",
-      icon: <UserIcon />,
-    },
-    {
-      name: "Data Laundry",
-      href: "/admin-dashboard/data-laundry",
-      icon: <List />,
-    },
-  ];
+  const [currentRole, setCurrentRole] = useState("");
+  const [navLinks, setNavLinks] = useState([]);
+  const { role } = useParams();
+
+  useEffect(() => {
+    setCurrentRole(role);
+    setNavLinks([]);
+
+    if (currentRole === "admin") {
+      setNavLinks(prevNavlinks => {
+        return [
+          ...prevNavlinks,
+          {
+            name: "Data User",
+            href: "/dashboard/admin/data-user",
+            icon: <UserIcon />,
+          },
+          {
+            name: "Data Laundry",
+            href: "/dashboard/admin/data-laundry",
+            icon: <List />,
+          },
+        ];
+      });
+    } else if (currentRole === "user") {
+      setNavLinks(prevNavlinks => {
+        return [
+          ...prevNavlinks,
+          {
+            name: "View Orders",
+            href: "/dashboard/user/view-orders",
+            icon: <List />,
+          },
+          {
+            name: "Book a Service",
+            href: "/dashboard/user/book-service",
+            icon: <Book />,
+          },
+        ];
+      });
+    }
+  }, [currentRole, role]);
 
   return (
     <aside className="left-0 top-0 hidden h-screen w-60 z-50 bg-sky-200 border-r border-gray-200 lg:fixed lg:block">

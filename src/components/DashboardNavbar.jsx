@@ -1,6 +1,9 @@
 import { UserIcon, Bell } from "lucide-react";
+import { useParams } from "react-router-dom";
 
 const AdminDashboardNavbar = () => {
+  const { role } = useParams();
+
   return (
     <nav className="fixed left-0 right-0 top-0 flex h-16 items-center justify-between border-b border-gray-200 bg-white">
       <div className="mx-5 flex w-full gap-4 items-center justify-end">
@@ -14,7 +17,9 @@ const AdminDashboardNavbar = () => {
           </div>
           <div>
             <h3 className="font-semibold text-primary">Uzumaki Udin</h3>
-            <span className="text-muted-foreground text-sm">Admin</span>
+            <span className="text-muted-foreground text-sm capitalize">
+              {role}
+            </span>
           </div>
         </div>
       </div>
