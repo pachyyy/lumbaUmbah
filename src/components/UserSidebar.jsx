@@ -1,0 +1,49 @@
+import { List, NotebookPen } from "lucide-react";
+
+const UserSidebar = () => {
+  const navLinks = [
+    {
+      name: "View My Orders",
+      href: "/user-dashboard/view-orders",
+      icon: <List />,
+    },
+    {
+      name: "Book A Service",
+      href: "/user-dashboard/book-service",
+      icon: <NotebookPen />,
+    },
+  ];
+
+  return (
+    <aside className="left-0 top-0 hidden h-screen w-60 z-50 bg-sky-200 border-r border-gray-200 lg:fixed lg:block">
+      <div className="mt-0 flex h-full flex-col p-5 space-y-8">
+        <div className="flex items-center gap-2">
+          <a href="#">
+            <img src="/logo/logo-navy.png" alt="logo" className="h-12 w-12" />
+          </a>
+          <h3 className="font-semibold">Lumba Umbah</h3>
+        </div>
+        <ul className="w-full space-y-3">
+          {navLinks.map((nav, index) => {
+            const isActive = window.location.pathname === nav.href;
+            return (
+              <li key={index}>
+                <a
+                  href={nav.href}
+                  className={`flex items-center w-full gap-2 rounded-md bg-white p-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-blue-700 ${
+                    isActive ? "bg-blue-50 text-blue-700" : ""
+                  }`}
+                >
+                  {nav.icon}
+                  <span className="truncate">{nav.name}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </aside>
+  );
+};
+
+export default UserSidebar;
