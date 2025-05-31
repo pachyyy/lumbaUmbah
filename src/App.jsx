@@ -13,37 +13,40 @@ import DashboardHome from "./components/dashboard/DashboardHome";
 import "./index.css";
 import DataLaundry from "./components/dashboard/admin/DataLaundry";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AuthProvider from "./hooks/AuthProvider";
 
 const App = () => {
   return (
-    <main className="main-content">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/price" element={<Price />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} />
+    <AuthProvider>
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/price" element={<Price />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
 
-        <Route
-          path="/dashboard/:role"
-          element={
-            <ProtectedRoute>
-              <DashboardLayout />
-            </ProtectedRoute>
-          }
-        >
-          <Route index element={<DashboardHome />} />
+          <Route
+            path="/dashboard/:role"
+            element={
+              <ProtectedRoute>
+                <DashboardLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<DashboardHome />} />
 
-          {/* admin */}
-          <Route path="data-user" element={<DataUsers />} />
-          <Route path="data-laundry" element={<DataLaundry />} />
+            {/* admin */}
+            <Route path="data-user" element={<DataUsers />} />
+            <Route path="data-laundry" element={<DataLaundry />} />
 
-          {/* user */}
-          <Route path="book-service" element={<BookService />} />
-          <Route path="view-orders" element={<ViewOrder />} />
-        </Route>
-      </Routes>
-    </main>
+            {/* user */}
+            <Route path="book-service" element={<BookService />} />
+            <Route path="view-orders" element={<ViewOrder />} />
+          </Route>
+        </Routes>
+      </main>
+    </AuthProvider>
   );
 };
 

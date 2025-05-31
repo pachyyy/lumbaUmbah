@@ -1,8 +1,8 @@
 import { UserIcon, Bell } from "lucide-react";
-import { useParams } from "react-router-dom";
+import { useAuth } from "@/hooks/AuthProvider";
 
 const AdminDashboardNavbar = () => {
-  const { role } = useParams();
+  const auth = useAuth()
 
   return (
     <nav className="fixed left-0 right-0 top-0 flex h-16 items-center justify-between border-b border-gray-200 bg-white">
@@ -16,9 +16,9 @@ const AdminDashboardNavbar = () => {
             <UserIcon className="h-6 w-6" />
           </div>
           <div>
-            <h3 className="font-semibold text-primary">Uzumaki Udin</h3>
+            <h3 className="font-semibold text-primary">{auth.user.username}</h3>
             <span className="text-muted-foreground text-sm capitalize">
-              {role}
+              {auth.user.role}
             </span>
           </div>
         </div>
