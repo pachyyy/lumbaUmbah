@@ -1,18 +1,18 @@
 import { UserIcon, List, Book, LogOut } from "lucide-react";
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/AuthProvider";
 
 const AdminSidebar = () => {
   const [currentRole, setCurrentRole] = useState("");
   const [navLinks, setNavLinks] = useState([]);
-  const { role } = useParams();
 
   const auth = useAuth();
 
   useEffect(() => {
-    setCurrentRole(role);
     setNavLinks([]);
+    if (auth.user) {
+      setCurrentRole(auth.user.role);
+    }
 
     if (currentRole === "admin") {
       setNavLinks(prevNavlinks => {
@@ -47,7 +47,7 @@ const AdminSidebar = () => {
         ];
       });
     }
-  }, [currentRole, role]);
+  }, [currentRole, auth]);
 
   return (
     <aside className="left-0 top-0 hidden h-screen w-60 z-50 bg-sky-200 border-r border-gray-200 lg:fixed lg:block">

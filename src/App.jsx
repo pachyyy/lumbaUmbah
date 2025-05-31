@@ -14,6 +14,7 @@ import "./index.css";
 import DataLaundry from "./components/dashboard/admin/DataLaundry";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AuthProvider from "./hooks/AuthProvider";
+import Authorization from "./components/Authorization";
 
 const App = () => {
   return (
@@ -27,23 +28,43 @@ const App = () => {
           <Route path="/signin" element={<SignIn />} />
 
           <Route
-            path="/dashboard/:role"
+            path="/dashboard/user"
             element={
               <ProtectedRoute>
-                <DashboardLayout />
+                <Authorization permissions={["user"]} />
               </ProtectedRoute>
             }
           >
-            <Route index element={<DashboardHome />} />
-
-            {/* admin */}
-            <Route path="data-user" element={<DataUsers />} />
-            <Route path="data-laundry" element={<DataLaundry />} />
-
-            {/* user */}
-            <Route path="book-service" element={<BookService />} />
-            <Route path="view-orders" element={<ViewOrder />} />
+          <Route
+              element={
+                <DashboardLayout />
+              }
+            >
+              <Route index element={<DashboardHome />} />
+              <Route path="book-service" element={<BookService />} />
+              <Route path="view-orders" element={<ViewOrder />} />
+            </Route>
           </Route>
+
+          <Route
+            path="/dashboard/admin"
+            element={
+              <ProtectedRoute>
+                <Authorization permissions={["admin"]} />
+              </ProtectedRoute>
+            }
+          >
+            <Route
+              element={
+                <DashboardLayout />
+              }
+            >
+              <Route index element={<DashboardHome />} />
+              <Route path="data-user" element={<DataUsers />} />
+              <Route path="data-laundry" element={<DataLaundry />} />
+            </Route>
+          </Route>
+
         </Routes>
       </main>
     </AuthProvider>

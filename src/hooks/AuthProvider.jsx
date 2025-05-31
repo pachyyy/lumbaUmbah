@@ -12,6 +12,7 @@ export const useAuth = () => {
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(localStorage.getItem('user') || null)
     const [token, setToken] = useState(localStorage.getItem('token') || "")
+    const [loading, setLoading] = useState(true)
 
     const navigate = useNavigate()
 
@@ -21,6 +22,8 @@ const AuthProvider = ({ children }) => {
             const foundUser = JSON.parse(loggedInUser)
             setUser(foundUser)
         }
+
+        setLoading(false)
     }, [])
 
     const userLogin = async (data) => {
@@ -95,7 +98,7 @@ const AuthProvider = ({ children }) => {
         toast.success('Logged Out!')
     }
 
-    return <AuthContext.Provider value={{ token, user, userLogin, adminLogin, logout }}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{ token, user, userLogin, adminLogin, logout, loading }}>{children}</AuthContext.Provider>
 }
 
 export default AuthProvider

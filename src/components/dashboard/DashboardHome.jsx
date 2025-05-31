@@ -1,7 +1,9 @@
-import React from "react";
+import { useAuth } from "@/hooks/AuthProvider";
 
 const DashboardHome = () => {
-  return <div>DashboardHome</div>;
+  const auth = useAuth();
+
+  return <div>Welcome, {auth.user.username}</div>;
 };
 
 export default DashboardHome;
