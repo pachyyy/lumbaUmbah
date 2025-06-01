@@ -88,7 +88,7 @@ const AdminDashboardNavbar = () => {
 
           <div className="items-center gap-3 hidden md:flex">
             <div className="flex flex-col items-end">
-              <h3 className="text-sm text-primary capitalize">{auth.user.full_name}</h3>
+              <h3 className="text-sm text-primary font-medium capitalize">{auth.user.full_name}</h3>
               <span className="text-muted-foreground text-sm capitalize">
                 {auth.user.role}
               </span>
@@ -122,7 +122,7 @@ const AdminDashboardNavbar = () => {
       </div>
 
       <aside 
-        className={`transform transition-transform duration-300 ease-in-out ${showAside ? 'translate-x-0' : '-translate-x-full'} block md:hidden z-20 absolute w-56 bg-white top-0 left-0 h-screen outline outline-gray-200`}
+        className={`transform transition-transform duration-300 ease-in-out ${showAside ? 'translate-x-0' : '-translate-x-full'} block md:hidden z-50 absolute w-56 bg-white top-0 left-0 h-screen outline outline-gray-200`}
       >
         <div className="w-full p-3 h-auto flex flex-col gap-3">
           <button onClick={() => setShowAside(false)} className="h-10 cursor-pointer w-10 rounded-md bg-white border border-gray-200 flex items-center justify-center self-end">
