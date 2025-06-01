@@ -8,8 +8,10 @@ const DashboardLayout = () => {
       <DashboardNavbar />
       <Sidebar />
 
-      <main className="flex items-center justify-center h-full max-w-7xl mx-auto w-full mt-20">
-        <Outlet />
+      <main className="bg-neutral-100 w-full h-screen">
+        <section className="flex items-center justify-center h-auto max-w-7xl mx-auto w-full pt-20">
+          <Outlet />
+        </section>
       </main>
     </>
   );
