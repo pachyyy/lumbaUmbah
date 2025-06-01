@@ -1,62 +1,26 @@
 import Table from "@/components/Table";
 import { Pencil, Eye, Search } from 'lucide-react';
-import { currencyFormat } from "@/helpers/currencyFormat";
-import { dateFormat } from "@/helpers/dateFormat";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import usePagination from "@/hooks/usePagination";
+import { fetchLaundryRequest } from "@/services/api";
+import { dateFormat } from "@/helpers/dateFormat";
+import { currencyFormat } from "@/helpers/currencyFormat";
+import Modal from "@/components/Modal";
+import OrderDetails from "./OrderDetails";
 
 function ViewOrder() {
+    const [laundryData, setLaundryData] = useState([])
+    const [isLoading, setIsloading] = useState(true)
     const [searchText, setSearchtext] = useState('')
+    const [filteredData, setFilteredData] = useState(laundryData || [])
+    const [selectedLaundry, setSelectedLaundry] = useState(null);
+    const [isShowModalOpen, setIsShowModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
     const navigate = useNavigate()
     const location = useLocation()
-
-    const laundry_requests = [
-    {
-        weight: 5,
-        type: 'reguler',
-        notes: "Use softener",
-        current_status: 'accepted',
-        completion_date: dateFormat("2025-06-02T20:50:27Z"),
-        total_price: currencyFormat(25000),
-    },
-    {
-        weight: 3,
-        type: 'reguler',
-        notes: "Handle with care",
-        current_status: 'accepted',
-        completion_date: dateFormat("2025-06-02T20:50:27Z"),
-        total_price: currencyFormat(25000),
-    },
-    {
-        weight: 7,
-        type: 'reguler',
-        notes: "Fold all items",
-        current_status: 'accepted',
-        completion_date: dateFormat("2025-06-02T20:50:27Z"),
-        total_price: currencyFormat(25000),
-    },
-    {
-        weight: 4.5,
-        type: 'reguler',
-        notes: "Remove tough stains",
-        current_status: 'accepted',
-        completion_date: dateFormat("2025-06-02T20:50:27Z"),
-        total_price: currencyFormat(25000),
-    },
-    {
-        weight: 6,
-        type: 'reguler',
-        notes: "Silk fabric",
-        current_status: 'accepted',
-        completion_date: dateFormat("2025-06-02T20:50:27Z"),
-        total_price: currencyFormat(25000),
-    },
-    ];
-
-    const [filteredData, setFilteredData] = useState(laundry_requests || [])
 
     const {
         currentPage,
@@ -66,13 +30,65 @@ function ViewOrder() {
         setCurrentPage
     } = usePagination(filteredData, 5)
 
+    useEffect(() => {
+      const loadLaundryData = async () => {
+        try {
+            const data = await fetchLaundryRequest()
+            if (!data) {
+                throw new Error("Error loading laundry data")
+            }
+            const requests = data.requests
+            setLaundryData(requests)
+            setFilteredData(requests)
+        } catch (error) {
+            console.error(error)
+        } finally {
+            setIsloading(false)
+        }
+      }
+
+      loadLaundryData()
+    }, [])
+
     const columns = [
-    { key: "weight", label: "Weight (Kg)" },
-    { key: "type", label: "Laundry Type" },
-    { key: "notes", label: "Notes" },
-    { key: "current_status", label: "Status" },
-    { key: "completion_date", label: "Completion Date" },
-    { key: "total_price", label: "Price" },
+        { key: "weight", label: "Weight (Kg)" },
+        { 
+            key: "laundry_type", 
+            label: "Laundry Type" ,
+            render: (val) => <span className="capitalize">{val}</span>,
+        },
+        { 
+            key: "notes", 
+            label: "Notes" ,
+            render: (val) => <div className="text-xs/5 p-3 border border-gray-200 rounded-md max-h-20 overflow-y-auto">{val}</div>,
+        },
+        { 
+            key: "current_status", 
+            label: "Status" ,
+            render: (val) => (
+                <span 
+                    className={`
+                        capitalize text-xs p-3 rounded-md 
+                        ${val === "completed" 
+                            ? "bg-green-100 text-green-700" :
+                         val === "pending" 
+                            ? "bg-gray-100 text-gray-700" : 
+                         val === "processed" 
+                            ? "bg-blue-50 text-blue-700" : "bg-red-100 text-red-700"}`}>
+                    {val}
+                </span>
+            ),
+        },
+        {
+            key: 'completion_date',
+            label: 'Completed At',
+            render: (val) => dateFormat(val),
+        },
+        { 
+            key: "total_price", 
+            label: "Price" ,
+            render: (val) => currencyFormat(val),
+        },
     ];
 
     useEffect(() => {
@@ -90,18 +106,30 @@ function ViewOrder() {
         setSearchtext(value)
         
         if (value !== '') {
-            const filteredItems = laundry_requests.filter((row) => columns.some((col) => {
+            const filteredItems = laundryData.filter((row) => columns.some((col) => {
                 const value = row[col.key]
                 return value?.toString().toLowerCase().includes(searchText.toLowerCase())
             }))
             setFilteredData(filteredItems)
         } else {
-            setFilteredData(laundry_requests)
+            setFilteredData(laundryData)
         }
     }
 
-    const handleEdit = (laundry_requests) => {
-        alert("Edit user: " + laundry_requests.weight);
+    const handleShow = (laundryData) => {
+    setSelectedLaundry(laundryData);
+    setIsShowModalOpen(true);
+    };
+
+    const handleEdit = (laundryData) => {
+    setSelectedLaundry(laundryData);
+    setIsEditModalOpen(true);
+    };
+
+    const closeModals = () => {
+    setIsShowModalOpen(false);
+    setIsEditModalOpen(false);
+    setSelectedLaundry(null);
     };
 
     return(
@@ -127,17 +155,65 @@ function ViewOrder() {
                 columns={columns} 
                 data={paginatedData} 
                 onEdit={handleEdit} 
+                onShow={handleShow}
                 totalData={filteredData.length}
                 currentPage={currentPage}
                 goToPage={goToPage}
                 totalPages={totalPages}
-                renderAction={(row) => ( 
-                    <button onClick={() => console.log("Edit", row)} className="flex justify-between gap-4"> 
-                    <Eye className="w-5 h-5 cursor-pointer" strokeWidth={1.5} /> 
-                    <Pencil className="w-5 h-5 cursor-pointer" strokeWidth={1.5} />
-                    </button>
+                isLoading={isLoading}
+                renderAction={(row) => (
+                    <div className="flex justify-between gap-4">
+                        <button onClick={() => handleShow(row)} aria-label="Show Details">
+                            <Eye className="w-5 h-5 cursor-pointer" strokeWidth={1.5} />
+                        </button>
+                        <button onClick={() => handleEdit(row)} aria-label="Edit Item">
+                            <Pencil className="w-5 h-5 cursor-pointer" strokeWidth={1.5} />
+                        </button>
+                    </div>
                 )}
             />
+
+            <OrderDetails
+                data={selectedLaundry}
+                isShowModalOpen={isShowModalOpen}
+                closeModals={closeModals}
+            />
+
+            <Modal
+                isOpen={isEditModalOpen}
+                onClose={closeModals}
+                title="Edit Laundry Request"
+                >
+                {selectedLaundry && (
+                    <form className="space-y-4 text-sm">
+                    <div>
+                        <label className="block font-medium">Notes</label>
+                        <input
+                        type="text"
+                        className="w-full border border-gray-300 rounded p-2"
+                        defaultValue={selectedLaundry.notes}
+                        />
+                    </div>
+                    <div>
+                        <label className="block font-medium">Status</label>
+                        <select
+                        className="w-full border border-gray-300 rounded p-2"
+                        defaultValue={selectedLaundry.current_status}
+                        >
+                        <option value="pending">Pending</option>
+                        <option value="accepted">Accepted</option>
+                        <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    <button
+                        type="submit"
+                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                    >
+                        Save Changes
+                    </button>
+                    </form>
+                )}
+            </Modal>
         </div>
     );
 

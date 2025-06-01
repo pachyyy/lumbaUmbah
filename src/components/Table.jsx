@@ -3,12 +3,12 @@ import { ChevronRight, ChevronLeft } from "lucide-react";
 const Table = ({ 
     columns = [], 
     data = [], 
-    onEdit, 
     renderAction,
     totalData,
     totalPages,
     currentPage,
     goToPage,
+    isLoading,
   }) => {
 
     const handleNextPage = () => {
@@ -32,28 +32,34 @@ const Table = ({
             </tr>
           </thead>
           <tbody>
+            {isLoading && (
+              <tr>
+                <td colSpan={columns.length + 1} className="px-10 py-4">
+                  <div className="flex items-center justify-center h-20 text-gray-500">Loading...</div>
+                </td>
+              </tr>
+            )}
             {data.length > 0 ? (
               <>
                 {data.map((row, i) => (
-              <tr key={i} className="bg-white border-b hover:bg-sky-50">
-                {columns.map((col, j) => (
-                  <td key={j} className="px-10 py-2">
-                    {row[col.key]}
-                  </td>
+                  <tr key={i} className="bg-white border-b hover:bg-sky-50">
+                    {columns.map((col, j) => (
+                      <td key={j} className="px-10 py-2">
+                        {col.render ? col.render(row[col.key]) : row[col.key]}
+                      </td>
+                    ))}
+                    <td className="px-10 py-4">
+                      {renderAction ? renderAction(row) : null}
+                    </td>
+                  </tr>
                 ))}
-                <td className="px-10 py-4">
-                  <button
-                    className="text-black"
-                    onClick={() => onEdit && onEdit(row)}
-                  > 
-                    {renderAction ? renderAction(row) : null}
-                  </button>
-                </td>
-              </tr>
-            ))}
               </>
             ) : (
-              <div className="w-full flex items-center justify-center h-20 text-gray-500">No data found...</div>
+              <tr>
+                <td colSpan={columns.length + 1} className="px-10 py-4">
+                  <div className="flex items-center justify-center h-20 text-gray-500">No data found...</div>
+                </td>
+              </tr>
             )}
           </tbody>
         </table>
