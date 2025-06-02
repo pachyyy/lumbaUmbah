@@ -1,6 +1,8 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { useCallback } from "react";
 
 const AuthContext = createContext();
 
@@ -25,6 +27,7 @@ const AuthProvider = ({ children }) => {
 
         setLoading(false)
     }, [])
+    
 
     const userLogin = async (data) => {
         try {
@@ -90,13 +93,45 @@ const AuthProvider = ({ children }) => {
         }
     }
 
-    const logout = () => {
-        setUser(null)
-        setToken("")
-        localStorage.removeItem('token')
-        navigate('/')
-        toast.success('Logged Out!')
-    }
+    const logout = useCallback(
+        () => {
+            setUser(null)
+            setToken("")
+            localStorage.removeItem('token')
+            navigate('/')
+            toast.success('Logged Out!')
+        },
+      [navigate],
+    )
+    
+
+    useEffect(() => {
+      if (token) {
+        try {
+            const decoded = jwtDecode(token)
+            const jwtMapclaims = decoded.MapClaims
+            if (jwtMapclaims.exp) {
+                const expTime = jwtMapclaims.exp * 1000
+                const currentTime = Date.now()
+                const timeExpiry = expTime - currentTime
+
+                if (timeExpiry <= 0) {
+                    logout()
+                } else {
+                    const timeout = setTimeout(() => {
+                        toast.error("Session Expired")
+                        logout()
+                    }, timeExpiry);
+
+                    return () => clearTimeout(timeout)
+                }
+            }
+        } catch (error) {
+            console.error("Error decoding token:", error)
+            logout()
+        }
+      }
+    }, [token, logout])
 
     return <AuthContext.Provider value={{ token, user, userLogin, adminLogin, logout, loading }}>{children}</AuthContext.Provider>
 }

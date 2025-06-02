@@ -7,8 +7,8 @@ import usePagination from "@/hooks/usePagination";
 import { fetchLaundryRequest } from "@/services/api";
 import { dateFormat } from "@/helpers/dateFormat";
 import { currencyFormat } from "@/helpers/currencyFormat";
-import Modal from "@/components/Modal";
 import OrderDetails from "./OrderDetails";
+import OrderEdit from "./OrderEdit";
 
 function ViewOrder() {
     const [laundryData, setLaundryData] = useState([])
@@ -179,41 +179,11 @@ function ViewOrder() {
                 closeModals={closeModals}
             />
 
-            <Modal
-                isOpen={isEditModalOpen}
-                onClose={closeModals}
-                title="Edit Laundry Request"
-                >
-                {selectedLaundry && (
-                    <form className="space-y-4 text-sm">
-                    <div>
-                        <label className="block font-medium">Notes</label>
-                        <input
-                        type="text"
-                        className="w-full border border-gray-300 rounded p-2"
-                        defaultValue={selectedLaundry.notes}
-                        />
-                    </div>
-                    <div>
-                        <label className="block font-medium">Status</label>
-                        <select
-                        className="w-full border border-gray-300 rounded p-2"
-                        defaultValue={selectedLaundry.current_status}
-                        >
-                        <option value="pending">Pending</option>
-                        <option value="accepted">Accepted</option>
-                        <option value="completed">Completed</option>
-                        </select>
-                    </div>
-                    <button
-                        type="submit"
-                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-                    >
-                        Save Changes
-                    </button>
-                    </form>
-                )}
-            </Modal>
+            <OrderEdit
+                data={selectedLaundry}
+                closeModals={closeModals}
+                isEditModalOpen={isEditModalOpen}
+            />
         </div>
     );
 
