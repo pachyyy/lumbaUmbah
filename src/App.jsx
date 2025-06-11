@@ -15,6 +15,7 @@ import DataLaundry from "./components/dashboard/admin/DataLaundry";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AuthProvider from "./hooks/AuthProvider";
 import Authorization from "./components/Authorization";
+import CreateAddress from "./components/dashboard/user/CreateAddress";
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
               <Route index element={<DashboardHome />} />
               <Route path="book-service" element={<BookService />} />
               <Route path="view-orders" element={<ViewOrder />} />
+              <Route path="add-address" element={<CreateAddress />} />
             </Route>
           </Route>
 

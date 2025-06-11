@@ -1,4 +1,4 @@
-import { UserIcon, List, Book, LogOut, Home } from "lucide-react";
+import { UserIcon, List, Book, LogOut, Home, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/AuthProvider";
 import { useLocation } from "react-router-dom";
@@ -56,6 +56,11 @@ const AdminSidebar = () => {
             name: "Book a Service",
             href: "/dashboard/user/book-service",
             icon: Book,
+          },
+          {
+            name: "Add Address",
+            href: "/dashboard/user/add-address",
+            icon: MapPin,
           },
         ];
       });
