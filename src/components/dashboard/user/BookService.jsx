@@ -143,7 +143,6 @@ function BookService() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const token = localStorage.getItem('token')
-        console.log('formData', formData);
 
         if (!token || token === "") {
             throw new Error("Missing token")

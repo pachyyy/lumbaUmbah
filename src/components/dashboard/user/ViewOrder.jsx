@@ -28,10 +28,9 @@ function ViewOrder() {
         totalPages,
         paginatedData,
         setCurrentPage
-    } = usePagination(filteredData, 5)
+    } = usePagination(filteredData, 10)
 
-    useEffect(() => {
-      const loadLaundryData = async () => {
+    const loadLaundryData = async () => {
         try {
             const data = await fetchLaundryRequest()
             if (!data) {
@@ -45,8 +44,9 @@ function ViewOrder() {
         } finally {
             setIsloading(false)
         }
-      }
+      } 
 
+    useEffect(() => {
       loadLaundryData()
     }, [])
 
@@ -183,6 +183,7 @@ function ViewOrder() {
                 data={selectedLaundry}
                 closeModals={closeModals}
                 isEditModalOpen={isEditModalOpen}
+                refetchData={loadLaundryData}
             />
         </div>
     );
