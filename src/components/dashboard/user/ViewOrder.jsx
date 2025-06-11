@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import usePagination from "@/hooks/usePagination";
-import { fetchLaundryRequest } from "@/services/api";
+import { fetchLaundryRequest } from "@/services/query";
 import { dateFormat } from "@/helpers/dateFormat";
 import { currencyFormat } from "@/helpers/currencyFormat";
 import OrderDetails from "./OrderDetails";
