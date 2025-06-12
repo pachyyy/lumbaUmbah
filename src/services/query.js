@@ -86,3 +86,32 @@ export async function fetchLaundryTypes() {
         throw error
     }
 }
+
+export async function fetchUserStats() {
+    const token = localStorage.getItem('token')
+    
+    if (!token || token === "") {
+        throw new Error("Missing token")
+    }
+
+    try {
+        const res = await fetch(`${BASE_URL}/statistics/user`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        })
+
+        if (!res.ok) {
+            const error = await res.json()
+            throw new Error(error.message)
+        }
+
+        const data = await res.json()
+        return data
+    } catch (error) {
+        console.error('Error fetching user stats', error)
+        throw error
+    }
+}
