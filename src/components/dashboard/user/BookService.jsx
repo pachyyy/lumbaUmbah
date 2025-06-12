@@ -5,7 +5,7 @@ import { currencyFormat } from "@/helpers/currencyFormat";
 import { BASE_URL } from "@/services/query";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { fetchLaundryRequest } from "@/services/query";
+import { fetchLaundryRequestByUserID } from "@/services/query";
 
 function BookService() {
     const [addressesData, setAddressesData] = useState([])
@@ -170,7 +170,7 @@ function BookService() {
             handleDefaultValue()
             toast.success('Success creating laundry request');
             navigate('/dashboard/user/view-orders');
-            fetchLaundryRequest();
+            fetchLaundryRequestByUserID();
         } catch (error) {
             console.error('Error creating laundry request', error);
             toast.error(`Error creating laundry request: ${error.message}`);

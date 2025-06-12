@@ -86,6 +86,8 @@ const OrderDetails = ({ data, isShowModalOpen, closeModals }) => {
                     {showStatusHistories && (
                         <div className="flex flex-col space-y-5 items-start text-sm p-2 w-full">
                             {data.status_histories.map((history, index) => {
+                                console.log(history.id)
+                                console.log(user.id)
                                 const isLast = index === data.status_histories.length - 1
                                 return (
                                 <div 
@@ -122,7 +124,11 @@ const OrderDetails = ({ data, isShowModalOpen, closeModals }) => {
                                             <span className="text-gray-500">
                                                 Updater
                                             </span>
-                                            <h3 className="font-medium">{user.id === history.updated_by ? "You" : "Admin"}</h3>
+                                            {user.role === "admin" ? (
+                                                <h3 className="font-medium">{user.id !== history.updated_by ? "User" : "You"}</h3>
+                                            ) : (
+                                                <h3 className="font-medium">{user.id === history.updated_by ? "You" : "Admin"}</h3>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
